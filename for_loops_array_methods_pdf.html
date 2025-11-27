@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Loops & Array Methods Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-left: 5px solid #764ba2;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .output {
+            background: #e8f5e9;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .output::before {
+            content: "📤 Output: ";
+            font-weight: bold;
+            color: #4caf50;
+        }
+        
+        .example {
+            background: #fff3e0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .tip {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .important {
+            background: #ffebee;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #f44336;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        ul {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <h1>🚀 For Loops & Array Methods Guide</h1>
+        
+        <!-- PART 1: FOR LOOPS -->
+        <h2>Part 1: Three Types of For Loops</h2>
+        
+        <!-- TRADITIONAL FOR LOOP -->
+        <h3>1. Traditional For Loop</h3>
+        <p>The classic for loop with counter, condition, and increment. Perfect when you need to know the index or control the iteration precisely.</p>
+        
+        <div class="code-block">
+// Syntax: for (initialization; condition; increment)
+for (let i = 0; i < 5; i++) {
+    console.log("Iteration " + i);
+}
+        </div>
+        
+        <div class="output">
+Iteration 0<br>
+Iteration 1<br>
+Iteration 2<br>
+Iteration 3<br>
+Iteration 4
+        </div>
+        
+        <h3>Program 1: Sum of Numbers from 1 to 100</h3>
+        <div class="code-block">
+let sum = 0;
+
+for (let i = 1; i <= 100; i++) {
+    sum += i;
+}
+
+console.log("Sum of numbers from 1 to 100: " + sum);
+        </div>
+        <div class="output">Sum of numbers from 1 to 100: 5050</div>
+        
+        <h3>Program 2: Print Multiplication Table</h3>
+        <div class="code-block">
+let number = 7;
+
+console.log("Multiplication table of " + number + ":");
+for (let i = 1; i <= 10; i++) {
+    console.log(number + " x " + i + " = " + (number * i));
+}
+        </div>
+        <div class="output">
+Multiplication table of 7:<br>
+7 x 1 = 7<br>
+7 x 2 = 14<br>
+7 x 3 = 21<br>
+...<br>
+7 x 10 = 70
+        </div>
+        
+        <h3>Program 3: Reverse a String</h3>
+        <div class="code-block">
+let text = "JavaScript";
+let reversed = "";
+
+for (let i = text.length - 1; i >= 0; i--) {
+    reversed += text[i];
+}
+
+console.log("Original: " + text);
+console.log("Reversed: " + reversed);
+        </div>
+        <div class="output">
+Original: JavaScript<br>
+Reversed: tpircSavaJ
+        </div>
+        
+        <div class="tip">
+            <strong>💡 When to use:</strong> Use traditional for loops when you need the index number or want to control start/end/step precisely (like going backwards or skipping numbers).
+        </div>
+        
+        <!-- FOR...OF LOOP -->
+        <h3>2. For...of Loop</h3>
+        <p>Loops through values of iterable objects (arrays, strings, etc.). Cleaner and simpler when you don't need the index.</p>
+        
+        <div class="code-block">
+// Syntax: for (let value of iterable)
+let fruits = ["apple", "banana", "orange"];
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+        </div>
+        
+        <div class="output">
+apple<br>
+banana<br>
+orange
+        </div>
+        
+        <h3>Program 1: Calculate Total Price</h3>
+        <div class="code-block">
+let prices = [29.99, 15.50, 42.00, 8.99, 33.25];
+let total = 0;
+
+for (let price of prices) {
+    total += price;
+}
+
+console.log("Total Price: $" + total.toFixed(2));
+console.log("Average Price: $" + (total / prices.length).toFixed(2));
+        </div>
+        <div class="output">
+Total Price: $129.73<br>
+Average Price: $25.95
+        </div>
+        
+        <h3>Program 2: Count Vowels in a String</h3>
+        <div class="code-block">
+let sentence = "Hello World Programming";
+let vowels = "aeiouAEIOU";
+let count = 0;
+
+for (let char of sentence) {
+    if (vowels.includes(char)) {
+        count++;
+    }
+}
+
+console.log("Number of vowels: " + count);
+        </div>
+        <div class="output">Number of vowels: 7</div>
+        
+        <h3>Program 3: Find Maximum Number</h3>
+        <div class="code-block">
+let numbers = [45, 23, 89, 12, 67, 34, 91, 56];
+let max = numbers[0];
+
+for (let num of numbers) {
+    if (num > max) {
+        max = num;
+    }
+}
+
+console.log("Maximum number: " + max);
+        </div>
+        <div class="output">Maximum number: 91</div>
+        
+        <div class="tip">
+            <strong>💡 When to use:</strong> Use for...of when you only need the values, not the index. It's cleaner and more readable than traditional for loops.
+        </div>
+        
+        <!-- FOR...IN LOOP -->
+        <h3>3. For...in Loop</h3>
+        <p>Loops through keys/properties of an object. Also works with arrays but gives you indices (not recommended for arrays).</p>
+        
+        <div class="code-block">
+// Syntax: for (let key in object)
+let person = {
+    name: "John",
+    age: 30,
+    city: "New York"
+};
+
+for (let key in person) {
+    console.log(key + ": " + person[key]);
+}
+        </div>
+        
+        <div class="output">
+name: John<br>
+age: 30<br>
+city: New York
+        </div>
+        
+        <h3>Program 1: Count Object Properties</h3>
+        <div class="code-block">
+let student = {
+    name: "Alice",
+    age: 22,
+    grade: "A",
+    subject: "Computer Science",
+    university: "MIT"
+};
+
+let propertyCount = 0;
+for (let key in student) {
+    propertyCount++;
+    console.log(propertyCount + ". " + key + " = " + student[key]);
+}
+
+console.log("\nTotal properties: " + propertyCount);
+        </div>
+        <div class="output">
+1. name = Alice<br>
+2. age = 22<br>
+3. grade = A<br>
+4. subject = Computer Science<br>
+5. university = MIT<br>
+<br>
+Total properties: 5
+        </div>
+        
+        <h3>Program 2: Calculate Product Inventory Value</h3>
+        <div class="code-block">
+let inventory = {
+    laptops: 15,
+    phones: 30,
+    tablets: 12,
+    monitors: 8
+};
+
+let prices = {
+    laptops: 800,
+    phones: 500,
+    tablets: 300,
+    monitors: 200
+};
+
+let totalValue = 0;
+
+for (let product in inventory) {
+    let value = inventory[product] * prices[product];
+    console.log(product + ": " + inventory[product] + 
+                " units x $" + prices[product] + " = $" + value);
+    totalValue += value;
+}
+
+console.log("\nTotal Inventory Value: $" + totalValue);
+        </div>
+        <div class="output">
+laptops: 15 units x $800 = $12000<br>
+phones: 30 units x $500 = $15000<br>
+tablets: 12 units x $300 = $3600<br>
+monitors: 8 units x $200 = $1600<br>
+<br>
+Total Inventory Value: $32200
+        </div>
+        
+        <h3>Program 3: Merge and Display User Info</h3>
+        <div class="code-block">
+let userInfo = {
+    username: "johndoe123",
+    email: "john@example.com",
+    role: "admin",
+    active: true
+};
+
+console.log("User Information:");
+console.log("=".repeat(40));
+
+for (let field in userInfo) {
+    let label = field.charAt(0).toUpperCase() + field.slice(1);
+    console.log(label + ": " + userInfo[field]);
+}
+        </div>
+        <div class="output">
+User Information:<br>
+========================================<br>
+Username: johndoe123<br>
+Email: john@example.com<br>
+Role: admin<br>
+Active: true
+        </div>
+        
+        <div class="important">
+            <strong>⚠️ Important:</strong> Use for...in for objects, NOT arrays! For arrays, use for...of or traditional for loop.
+        </div>
+        
+        <!-- COMPARISON TABLE -->
+        <h2>Quick Comparison of For Loops</h2>
+        
+        <table>
+            <tr>
+                <th>Loop Type</th>
+                <th>Best For</th>
+                <th>Gets</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><strong>for</strong></td>
+                <td>Precise control, need index</td>
+                <td>Index/Counter</td>
+                <td>for (let i = 0; i < 5; i++)</td>
+            </tr>
+            <tr>
+                <td><strong>for...of</strong></td>
+                <td>Arrays, Strings (values)</td>
+                <td>Values</td>
+                <td>for (let item of array)</td>
+            </tr>
+            <tr>
+                <td><strong>for...in</strong></td>
+                <td>Objects (properties)</td>
+                <td>Keys/Properties</td>
+                <td>for (let key in object)</td>
+            </tr>
+        </table>
+        
+        <!-- PART 2: ARRAY METHODS -->
+        <h2>Part 2: Essential Array Methods</h2>
+        
+        <p>Array methods are powerful built-in functions that make working with arrays easier. They often use callbacks (functions passed as arguments).</p>
+        
+        <!-- FOREACH -->
+        <h3>1. forEach() - Execute Function for Each Element</h3>
+        <p>Loops through array and executes a function for each element. Does NOT return a new array.</p>
+        
+        <div class="code-block">
+let colors = ["red", "green", "blue"];
+
+colors.forEach(function(color, index) {
+    console.log(index + ": " + color);
+});
+        </div>
+        <div class="output">
+0: red<br>
+1: green<br>
+2: blue
+        </div>
+        
+        <div class="example">
+            <strong>Real Example:</strong> Print Shopping List
+            <div class="code-block">
+let shoppingList = ["Milk", "Bread", "Eggs", "Butter"];
+
+console.log("Shopping List:");
+shoppingList.forEach(function(item, index) {
+    console.log((index + 1) + ". " + item);
+});
+            </div>
+            <div class="output">
+Shopping List:<br>
+1. Milk<br>
+2. Bread<br>
+3. Eggs<br>
+4. Butter
+            </div>
+        </div>
+        
+        <!-- MAP -->
+        <h3>2. map() - Transform Each Element</h3>
+        <p>Creates a NEW array by transforming each element. Returns the new array.</p>
+        
+        <div class="code-block">
+let numbers = [1, 2, 3, 4, 5];
+
+let doubled = numbers.map(function(num) {
+    return num * 2;
+});
+
+console.log("Original: " + numbers);
+console.log("Doubled: " + doubled);
+        </div>
+        <div class="output">
+Original: 1,2,3,4,5<br>
+Doubled: 2,4,6,8,10
+        </div>
+        
+        <div class="example">
+            <strong>Real Example:</strong> Convert Celsius to Fahrenheit
+            <div class="code-block">
+let celsius = [0, 10, 20, 30, 40];
+
+let fahrenheit = celsius.map(function(temp) {
+    return (temp * 9/5) + 32;
+});
+
+console.log("Celsius: " + celsius);
+console.log("Fahrenheit: " + fahrenheit);
+            </div>
+            <div class="output">
+Celsius: 0,10,20,30,40<br>
+Fahrenheit: 32,50,68,86,104
+            </div>
+        </div>
+        
+        <!-- FILTER -->
+        <h3>3. filter() - Keep Elements that Pass Test</h3>
+        <p>Creates a NEW array with only elements that pass a test (return true).</p>
+        
+        <div class="code-block">
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+let evenNumbers = numbers.filter(function(num) {
+    return num % 2 === 0;
+});
+
+console.log("All numbers: " + numbers);
+console.log("Even numbers: " + evenNumbers);
+        </div>
+        <div class="output">
+All numbers: 1,2,3,4,5,6,7,8,9,10<br>
+Even numbers: 2,4,6,8,10
+        </div>
+        
+        <div class="example">
+            <strong>Real Example:</strong> Filter Products by Price
+            <div class="code-block">
+let products = [
+    { name: "Laptop", price: 1000 },
+    { name: "Mouse", price: 25 },
+    { name: "Keyboard", price: 75 },
+    { name: "Monitor", price: 300 }
+];
+
+let affordable = products.filter(function(product) {
+    return product.price <= 100;
+});
+
+console.log("Affordable products:");
+affordable.forEach(function(product) {
+    console.log(product.name + ": $" + product.price);
+});
+            </div>
+            <div class="output">
+Affordable products:<br>
+Mouse: $25<br>
+Keyboard: $75
+            </div>
+        </div>
+        
+        <!-- FIND -->
+        <h3>4. find() - Find First Element that Passes Test</h3>
+        <p>Returns the FIRST element that passes the test, or undefined if none found.</p>
+        
+        <div class="code-block">
+let users = [
+    { id: 1, name: "John" },
+    { id: 2, name: "Jane" },
+    { id: 3, name: "Bob" }
+];
+
+let user = users.find(function(user) {
+    return user.id === 2;
+});
+
+console.log("Found user: " + user.name);
+        </div>
+        <div class="output">Found user: Jane</div>
+        
+        <!-- REDUCE -->
+        <h3>5. reduce() - Reduce Array to Single Value</h3>
+        <p>Reduces array to a single value by executing a function on each element.</p>
+        
+        <div class="code-block">
+let numbers = [1, 2, 3, 4, 5];
+
+let sum = numbers.reduce(function(total, num) {
+    return total + num;
+}, 0);
+
+console.log("Sum: " + sum);
+        </div>
+        <div class="output">Sum: 15</div>
+        
+        <div class="example">
+            <strong>Real Example:</strong> Calculate Total Cart Price
+            <div class="code-block">
+let cart = [
+    { item: "Shirt", price: 25, quantity: 2 },
+    { item: "Pants", price: 40, quantity: 1 },
+    { item: "Shoes", price: 60, quantity: 1 }
+];
+
+let totalPrice = cart.reduce(function(total, product) {
+    return total + (product.price * product.quantity);
+}, 0);
+
+console.log("Total Cart Price: $" + totalPrice);
+            </div>
+            <div class="output">Total Cart Price: $150</div>
+        </div>
+        
+        <!-- SOME -->
+        <h3>6. some() - Check if At Least One Passes Test</h3>
+        <p>Returns true if AT LEAST ONE element passes the test.</p>
+        
+        <div class="code-block">
+let numbers = [1, 3, 5, 8, 9];
+
+let hasEven = numbers.some(function(num) {
+    return num % 2 === 0;
+});
+
+console.log("Has even number? " + hasEven);
+        </div>
+        <div class="output">Has even number? true</div>
+        
+        <!-- EVERY -->
+        <h3>7. every() - Check if All Pass Test</h3>
+        <p>Returns true only if ALL elements pass the test.</p>
+        
+        <div class="code-block">
+let numbers = [2, 4, 6, 8, 10];
+
+let allEven = numbers.every(function(num) {
+    return num % 2 === 0;
+});
+
+console.log("All even? " + allEven);
+        </div>
+        <div class="output">All even? true</div>
+        
+        <!-- SORT -->
+        <h3>8. sort() - Sort Array Elements</h3>
+        <p>Sorts array elements. MODIFIES the original array.</p>
+        
+        <div class="code-block">
+// Sorting strings (default)
+let fruits = ["banana", "apple", "orange", "mango"];
+fruits.sort();
+console.log("Sorted fruits: " + fruits);
+
+// Sorting numbers (need compare function)
+let numbers = [40, 5, 100, 1, 25];
+numbers.sort(function(a, b) {
+    return a - b; // ascending order
+});
+console.log("Sorted numbers: " + numbers);
+        </div>
+        <div class="output">
+Sorted fruits: apple,banana,mango,orange<br>
+Sorted numbers: 1,5,25,40,100
+        </div>
+        
+        <!-- INCLUDES -->
+        <h3>9. includes() - Check if Array Contains Value</h3>
+        <p>Returns true if array contains the value, false otherwise.</p>
+        
+        <div class="code-block">
+let fruits = ["apple", "banana", "orange"];
+
+console.log(fruits.includes("banana")); // true
+console.log(fruits.includes("grape"));  // false
+        </div>
+        <div class="output">
+true<br>
+false
+        </div>
+        
+        <!-- INDEXOF -->
+        <h3>10. indexOf() - Find Index of Element</h3>
+        <p>Returns the first index of an element, or -1 if not found.</p>
+        
+        <div class="code-block">
+let colors = ["red", "green", "blue", "green"];
+
+console.log(colors.indexOf("green"));  // 1 (first occurrence)
+console.log(colors.indexOf("yellow")); // -1 (not found)
+        </div>
+        <div class="output">
+1<br>
+-1
+        </div>
+        
+        <!-- COMPREHENSIVE EXAMPLE -->
+        <h2>🎯 Comprehensive Real-World Example</h2>
+        <p>Combining multiple array methods to process student data:</p>
+        
+        <div class="code-block">
+let students = [
+    { name: "Alice", age: 20, grade: 85 },
+    { name: "Bob", age: 22, grade: 92 },
+    { name: "Charlie", age: 21, grade: 78 },
+    { name: "Diana", age: 20, grade: 88 },
+    { name: "Eve", age: 23, grade: 95 }
+];
+
+// 1. Filter: Get students with grade >= 85
+let topStudents = students.filter(function(student) {
+    return student.grade >= 85;
+});
+
+console.log("Top Students (grade >= 85):");
+topStudents.forEach(function(student) {
+    console.log(student.name + ": " + student.grade);
+});
+
+// 2. Map: Get all student names
+let names = students.map(function(student) {
+    return student.name;
+});
+console.log("\nAll student names: " + names.join(", "));
+
+// 3. Reduce: Calculate average grade
+let averageGrade = students.reduce(function(sum, student) {
+    return sum + student.grade;
+}, 0) / students.length;
+
+console.log("\nAverage grade: " + averageGrade.toFixed(2));
+
+// 4. Some: Check if any student is under 21
+let hasYoungStudent = students.some(function(student) {
+    return student.age < 21;
+});
+console.log("Has student under 21? " + hasYoungStudent);
+
+// 5. Find: Find student with highest grade
+let topPerformer = students.reduce(function(max, student) {
+    return student.grade > max.grade ? student : max;
+});
+console.log("\nTop performer: " + topPerformer.name + 
+            " with grade " + topPerformer.grade);
+        </div>
+        
+        <div class="output">
+Top Students (grade >= 85):<br>
+Alice: 85<br>
+Bob: 92<br>
+Diana: 88<br>
+Eve: 95<br>
+<br>
+All student names: Alice, Bob, Charlie, Diana, Eve<br>
+<br>
+Average grade: 87.60<br>
+Has student under 21? true<br>
+<br>
+Top performer: Eve with grade 95
+        </div>
+        
+        <!-- QUICK REFERENCE -->
+        <h2>📚 Quick Reference: Array Methods</h2>
+        
+        <table>
+            <tr>
+                <th>Method</th>
+                <th>Purpose</th>
+                <th>Returns</th>
+                <th>Changes Original?</th>
+            </tr>
+            <tr>
+                <td>forEach()</td>
+                <td>Loop through each element</td>
+                <td>undefined</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>map()</td>
+                <td>Transform each element</td>
+                <td>New array</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>filter()</td>
+                <td>Keep elements that pass test</td>
+                <td>New array</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>find()</td>
+                <td>Find first matching element</td>
+                <td>Element or undefined</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>reduce()</td>
+                <td>Reduce to single value</td>
+                <td>Single value</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>some()</td>
+                <td>Test if any pass</td>
+                <td>Boolean</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>every()</td>
+                <td>Test if all pass</td>
+                <td>Boolean</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>sort()</td>
+                <td>Sort elements</td>
+                <td>Sorted array</td>
+                <td>Yes ⚠️</td>
+            </tr>
+            <tr>
+                <td>includes()</td>
+                <td>Check if contains value</td>
+                <td>Boolean</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>indexOf()</td>
+                <td>Find index of element</td>
+                <td>Number or -1</td>
+                <td>No</td>
+            </tr>
+        </table>
+        
+        <div class="tip">
+            <strong>💡 Pro Tips:</strong>
+            <ul>
+                <li>Use <span class="highlight">map()</span> when you want to transform ALL elements</li>
+                <li>Use <span class="highlight">filter()</span> when you want to select SOME elements</li>
+                <li>Use <span class="highlight">reduce()</span> when you want to calculate a SINGLE value</li>
+                <li>Use <span class="highlight">forEach()</span> when you just want to DO something with each element</li>
+                <li>Chain methods together: <code>arr.filter().map().reduce()</code></li>
+            </ul>
+        </div>
+        
+        <div class="important">
+            <strong>⚠️ Remember:</strong> Most array methods don't change the original array - they return a new one. Only methods like sort(), reverse(), push(), pop(), splice() modify the original array.
+        </div>
+    </div>
+    
+    <button class="download-btn" onclick="generatePDF()">📄 Download PDF</button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <script>
+        async function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const content = document.getElementById('content');
+            const button = document.querySelector('.download-btn');
+            
+            button.style.display = 'none';
+            button.textContent = '⏳ Generating PDF...';
+            
+            try {
+                const canvas = await html2canvas(content, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#ffffff'
+                });
+                
+                const imgData = canvas.toDataURL('image/png
