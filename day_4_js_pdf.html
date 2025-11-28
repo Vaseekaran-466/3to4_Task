@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Core Concepts Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid #667eea;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: #718096;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e2e8f0;
+            font-weight: 600;
+        }
+        
+        .method-card {
+            background: #f7fafc;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .method-name {
+            font-size: 24px;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .method-subtitle {
+            font-size: 16px;
+            color: #4a5568;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .purpose {
+            background: #edf2f7;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .purpose-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+        
+        .io-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .io-box {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .io-label {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #a0aec0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .code-block .keyword {
+            color: #fc8181;
+        }
+        
+        .code-block .function {
+            color: #90cdf4;
+        }
+        
+        .code-block .string {
+            color: #9ae6b4;
+        }
+        
+        .code-block .number {
+            color: #fbd38d;
+        }
+        
+        .code-block .comment {
+            color: #718096;
+            font-style: italic;
+        }
+        
+        .result-box {
+            background: #c6f6d5;
+            border-left: 4px solid #48bb78;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .result-label {
+            font-weight: 600;
+            color: #22543d;
+            margin-right: 10px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f7fafc;
+        }
+        
+        .highlight-box {
+            background: #fed7d7;
+            border-left: 5px solid #f56565;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .highlight-title {
+            font-weight: 600;
+            color: #742a2a;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #764ba2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 30px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.2s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .download-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JavaScript Core Concepts</h1>
+            <div class="subtitle">Data Manipulation & ES6 Features - Complete Reference Guide</div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Part 1: The Functional Array Trio (Immutability)</h2>
+            <p style="margin-bottom: 20px; color: #4a5568;">These methods return new arrays and <strong>do not modify</strong> the original data.</p>
+
+            <div class="method-card">
+                <div class="method-name">1. map() - The Transformer</div>
+                <div class="method-subtitle">"Transform every element and return a new array"</div>
+                
+                <div class="purpose">
+                    <div class="purpose-label">Purpose:</div>
+                    Transform every element in an array and return a new array of the same length.
+                </div>
+
+                <div class="io-info">
+                    <div class="io-box">
+                        <div class="io-label">INPUT</div>
+                        Array of length N
+                    </div>
+                    <div class="io-box">
+                        <div class="io-label">OUTPUT</div>
+                        New Array of length N
+                    </div>
+                </div>
+
+                <div class="code-block">
+<span class="keyword">const</span> prices = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];
+
+<span class="keyword">const</span> taxedPrices = prices.<span class="function">map</span>((price) => {
+    <span class="keyword">return</span> price * <span class="number">1.2</span>; <span class="comment">// Add 20% tax</span>
+});
+                </div>
+
+                <div class="result-box">
+                    <span class="result-label">Result:</span> [12, 24, 36]
+                </div>
+            </div>
+
+            <div class="method-card">
+                <div class="method-name">2. filter() - The Gatekeeper</div>
+                <div class="method-subtitle">"Select elements that pass a condition"</div>
+                
+                <div class="purpose">
+                    <div class="purpose-label">Purpose:</div>
+                    Select a subset of elements that pass a specific Boolean condition (true).
+                </div>
+
+                <div class="io-info">
+                    <div class="io-box">
+                        <div class="io-label">INPUT</div>
+                        Array of length N
+                    </div>
+                    <div class="io-box">
+                        <div class="io-label">OUTPUT</div>
+                        New Array of length 0 to N
+                    </div>
+                </div>
+
+                <div class="code-block">
+<span class="keyword">const</span> scores = [<span class="number">45</span>, <span class="number">80</span>, <span class="number">92</span>, <span class="number">30</span>, <span class="number">60</span>];
+
+<span class="keyword">const</span> passingScores = scores.<span class="function">filter</span>((score) => {
+    <span class="keyword">return</span> score >= <span class="number">60</span>; <span class="comment">// Only passing grades</span>
+});
+                </div>
+
+                <div class="result-box">
+                    <span class="result-label">Result:</span> [80, 92, 60]
+                </div>
+            </div>
+
+            <div class="method-card">
+                <div class="method-name">3. reduce() - The Accumulator</div>
+                <div class="method-subtitle">"Aggregate an array down to a single value"</div>
+                
+                <div class="purpose">
+                    <div class="purpose-label">Purpose:</div>
+                    Aggregate an array down to a single value (can be a number, string, object, or array).
+                </div>
+
+                <div class="io-info">
+                    <div class="io-box">
+                        <div class="io-label">INPUT</div>
+                        Array of length N
+                    </div>
+                    <div class="io-box">
+                        <div class="io-label">OUTPUT</div>
+                        Single value (any type)
+                    </div>
+                </div>
+
+                <div class="code-block">
+<span class="keyword">const</span> cart = [<span class="number">20</span>, <span class="number">50</span>, <span class="number">10</span>];
+
+<span class="keyword">const</span> total = cart.<span class="function">reduce</span>((totalSoFar, currentPrice) => {
+    <span class="keyword">return</span> totalSoFar + currentPrice;
+}, <span class="number">0</span>); <span class="comment">// initialValue is 0</span>
+                </div>
+
+                <div class="result-box">
+                    <span class="result-label">Result:</span> 80
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-title">🔥 Advanced Pattern: Grouping Data with reduce()</div>
+                <p style="margin-bottom: 15px;">Convert an array into a grouped object - a powerful real-world pattern!</p>
+
+                <div class="code-block">
+<span class="keyword">const</span> inventory = [
+  { name: <span class="string">"Banana"</span>, type: <span class="string">"Fruit"</span> },
+  { name: <span class="string">"Cherries"</span>, type: <span class="string">"Fruit"</span> },
+  { name: <span class="string">"Asparagus"</span>, type: <span class="string">"Vegetables"</span> }
+];
+
+<span class="keyword">const</span> groupedItems = inventory.<span class="function">reduce</span>((accumulator, item) => {
+  <span class="keyword">const</span> category = item.type;
+
+  <span class="keyword">if</span> (!accumulator[category]) {
+    accumulator[category] = []; <span class="comment">// Create array if doesn't exist</span>
+  }
+  accumulator[category].<span class="function">push</span>(item.name);
+
+  <span class="keyword">return</span> accumulator;
+}, {});
+                </div>
+
+                <div class="result-box">
+                    <span class="result-label">Result:</span><br>
+                    {<br>
+                    &nbsp;&nbsp;Fruit: ["Banana", "Cherries"],<br>
+                    &nbsp;&nbsp;Vegetables: ["Asparagus"]<br>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Part 2: Object Bridge Methods</h2>
+            <p style="margin-bottom: 20px; color: #4a5568;">Convert parts of an object into an iterable array.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Returns</th>
+                        <th>Example (user = {name: "A", age: 28})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Object.keys()</strong></td>
+                        <td>Array of property names (Strings)</td>
+                        <td><code>["name", "age"]</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Object.values()</strong></td>
+                        <td>Array of property values</td>
+                        <td><code>["A", 28]</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Object.entries()</strong></td>
+                        <td>Array of [key, value] arrays</td>
+                        <td><code>[["name", "A"], ["age", 28]]</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">ES5 vs. ES6 (ECMAScript 2015)</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>ES5 (Old Way)</th>
+                        <th>ES6 (Modern Way)</th>
+                        <th>Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Variable Scoping</strong></td>
+                        <td>var (Function-scoped, hoisted)</td>
+                        <td>let and const (Block-scoped)</td>
+                        <td>Prevents hoisting bugs and limits variable mutation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Functions</strong></td>
+                        <td>function keyword, manual this binding</td>
+                        <td>Arrow Functions (=>)</td>
+                        <td>Concise syntax; automatically binds this</td>
+                    </tr>
+                    <tr>
+                        <td><strong>String Concatenation</strong></td>
+                        <td>'Hello ' + name</td>
+                        <td>Template Literals (`Hello ${name}`)</td>
+                        <td>Easy variable interpolation and multi-line strings</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Key ES6 Features</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-title">1. let and const</div>
+                    <p style="margin-bottom: 10px; color: #4a5568;">Block-scoped variables</p>
+                    <div class="code-block" style="font-size: 13px;">
+<span class="keyword">const</span> PI = <span class="number">3.14</span>; <span class="comment">// Cannot reassign</span>
+<span class="keyword">let</span> count = <span class="number">0</span>; <span class="comment">// Can reassign</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">2. Arrow Functions</div>
+                    <p style="margin-bottom: 10px; color: #4a5568;">Shorthand syntax with lexical this</p>
+                    <div class="code-block" style="font-size: 13px;">
+<span class="keyword">const</span> add = (a, b) => a + b;
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">3. Classes</div>
+                    <p style="margin-bottom: 10px; color: #4a5568;">OO-style structure over prototypes</p>
+                    <div class="code-block" style="font-size: 13px;">
+<span class="keyword">class</span> Dog {
+  <span class="function">constructor</span>(name) {
+    <span class="keyword">this</span>.name = name;
+  }
+  <span class="function">bark</span>() {
+    console.<span class="function">log</span>(`${<span class="keyword">this</span>.name} says Woof!`);
+  }
+}
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">4. Destructuring</div>
+                    <p style="margin-bottom: 10px; color: #4a5568;">Extract values quickly</p>
+                    <div class="code-block" style="font-size: 13px;">
+<span class="keyword">const</span> person = { first: <span class="string">'J'</span>, last: <span class="string">'Doe'</span> };
+<span class="keyword">const</span> { first, last } = person;
+
+<span class="keyword">const</span> [x, y] = [<span class="number">10</span>, <span class="number">20</span>];
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">5. Spread & Rest (...)</div>
+                    <p style="margin-bottom: 10px; color: #4a5568;">Expand or bundle elements</p>
+                    <div class="code-block" style="font-size: 13px;">
+<span class="comment">// Spread</span>
+<span class="keyword">const</span> arr2 = [...arr1, <span class="number">3</span>, <span class="number">4</span>];
+
+<span class="comment">// Rest</span>
+<span class="keyword">function</span> <span class="function">sumAll</span>(...numbers) {
+  <span class="keyword">return</span> numbers.<span class="function">reduce</span>((t, n) => t + n, <span class="number">0</span>);
+}
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">6. async/await</div>
+                    <p style="margin-bottom: 10px; color: #4a5568;">Cleaner asynchronous code</p>
+                    <div class="code-block" style="font-size: 13px;">
+<span class="keyword">async function</span> <span class="function">getData</span>() {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> data = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">'/api/data'</span>)
+      .<span class="function">then</span>(res => res.<span class="function">json</span>());
+    <span class="keyword">return</span> data;
+  } <span class="keyword">catch</span> (error) {
+    console.<span class="function">error</span>(error);
+  }
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="download-btn" onclick="window.print()">📥 Download as PDF</button>
+    </div>
+</body>
+</html>
